@@ -1,0 +1,14 @@
+version: '3'
+services:
+  artifactory-server:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    container_name: artifactory-server
+    volumes:
+      - /etc/artifactory/data:/opt/jfrog/artifactory/data
+      - /etc/artifactory/logs:/opt/jfrog/artifactory/logs
+      - /etc/artifactory/backup:/opt/jfrog/artifactory/backup
+    restart: unless-stopped
+    ports:
+      - 8988:8081
